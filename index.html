@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.21.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.2"></script>
+    <!-- My CSS file -->
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="title">
+            <h3 style="text-align:center;">The visualization of the CO2 emission over the world</h3>
+        </div>
+    </header>
+    <div class="charts">
+        <div class="chart-item">
+            <div id="co2-emissions-world-map" class="chart"></div>
+            <div class="description">
+                The map above is used to show the emissions of CO2 gas all over the world. In the world map above, the
+                depth of the map's color represents the amount of the CO2 emissions, The darker the color, the more
+                CO2 emissions, and vice versa. In order to let us know more detail information about the CO2 of the
+                specified country, the world map would pop a window to show the amount of the CO2 emission of the
+                current country. Also, it could pull the slides to see the CO2 emissions in different years.
+                From the map above, we could find that the regions with a large amount are China, US, Brazil,
+                Russia, Australia and India, and so on.
+            </div>
+        </div>
+        <div class="chart-item">
+            <div id="top-10-co2-emission-chart" class="chart"></div>
+            <div class="description">
+                The chart above is used to show the top 10 countries in GHG emissions from 1990 - 2018. From this chart
+                above, we can know the top 10 countries with highest CO2 emission from 1990 to 2018 are: Brazil, Canada,
+                China, Germany, India, Indonesia, Iran, Japan, Rissia and United States, respectively. Especially, the
+                growth rate of the top 3 countries are obviously increasing since the 1997.
+            </div>
+        </div>
+        <div class="chart-item">
+            <div id="co2-emissions-1990-2018" class="chart"></div>
+            <div class="description">
+                This chart above is mainly used to show the changement of the top 10 countries with the highest CO2
+                emission from 1990 to 2018. From this chart, it could know the increasing rate of the CO2 emission of
+                the Indonesia is the highest, its changement from the 1.6 to 11.8. The following countries are China and
+                Russia, respectively.
+            </div>
+        </div>
+        <div class="description">
+            <h3>Data Source Links</h3>
+            <p>
+                World CO2 Emissions
+            <p><a
+                    href="https://raw.githubusercontent.com/jianingZhou28321367/ass2/8e2d3374e66a1a0c0214c131965f5b8e8b00f434/Data/ghg-emissions.csv">https://raw.githubusercontent.com/jianingZhou28321367/ass2/8e2d3374e66a1a0c0214c131965f5b8e8b00f434/Data/ghg-emissions.csv</a>
+            </p>
+            </p>
+            <p>
+                Top10 CO2 Emissions
+            <p><a
+                    href="https://raw.githubusercontent.com/jianingZhou28321367/ass2/justin/Data/TOP5%20ghg.csv">https://raw.githubusercontent.com/jianingZhou28321367/ass2/justin/Data/TOP5%20ghg.csv</a>
+            </p>
+            </p>
+            <p>
+                Top10 Countries Which CO2 Changment From 1990 to 2018
+            <p><a
+                    href="https://raw.githubusercontent.com/jianingZhou28321367/ass2/justin/Data/TOP5%20ghg.csv">https://raw.githubusercontent.com/jianingZhou28321367/ass2/justin/Data/TOP5%20ghg.csv</a>
+            </p>
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        vegaEmbed('#co2-emissions-world-map', "data/CO2EmissionsOfWorld.json");
+        vegaEmbed('#top-10-co2-emission-chart', "data/Top10Co2Emissions.json");
+        vegaEmbed('#co2-emissions-1990-2018', "data/Co2Emissions19902018.json");
+    </script>
+</body>
+
+</html>

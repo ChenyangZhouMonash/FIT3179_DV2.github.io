@@ -1,0 +1,50 @@
+:root {
+    --primary-color: orange;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.chart {
+    width: 100%;
+}
+
+.header {
+    background-color: var(--primary-color);
+    padding: .8rem 1rem;
+}
+
+.header .title {
+    color: #fff;
+}
+
+.charts {
+    padding: 1rem;
+}
+
+.charts .chart-item:not(:first-child) {
+    margin-top: 1rem;
+}
+
+.description {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 1rem;
+    font-size: 1.3vw;
+    margin: 1rem auto;
+}
+

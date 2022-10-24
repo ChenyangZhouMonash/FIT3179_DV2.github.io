@@ -1,0 +1,106 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Basic choropleth (rate/ratio)",
+    "width": "container",
+    "height": 300,
+    "title": "CO2 Emissions of each country from 1990 to 2018 year",
+    "params": [
+        {
+            "name": "highlight",
+            "select": {
+                "type": "point",
+                "on": "mouseover"
+            }
+        },
+        {
+            "name": "year_selection",
+            "value": 1990,
+            "bind": {
+                "input": "range",
+                "min": 1990,
+                "max": 2018,
+                "step": 1,
+                "name": "Year: "
+            }
+        }
+    ],
+    "projection": {
+        "type": "equirectangular"
+    },
+    "layer": [
+        {
+            "data": {
+                "url": "data/co2_emissions_1990_2018.csv"
+            },
+            "transform": [
+                {
+                    "lookup": "country_code",
+                    "from": {
+                        "data": {
+                            "url": "https://www.trafforddatalab.io/interactive_graphics_companion/data/countries.geojson",
+                            "format": {
+                                "property": "features"
+                            }
+                        },
+                        "key": "properties.country_code"
+                    },
+                    "as": "geo_map"
+                },
+                {
+                    "filter": "datum.year == year_selection"
+                }
+            ],
+            "mark": {
+                "type": "geoshape",
+                "stroke": "#5f5e5e",
+                "strokeWidth": 1
+            },
+            "encoding": {
+                "shape": {
+                    "field": "geo_map",
+                    "type": "geojson"
+                },
+                "color": {
+                    "field": "emission_value",
+                    "type": "quantitative",
+                    "scale": {
+                        "scheme": "oranges"
+                    },
+                    "legend": {
+                        "title": "CO2 Emissions",
+                        "format": ".2s"
+                    }
+                },
+                "tooltip": [
+                    {
+                        "field": "Country",
+                        "type": "nominal",
+                        "title": "Country"
+                    },
+                    {
+                        "field": "year",
+                        "type": "nominal",
+                        "title": "Year"
+                    },
+                    {
+                        "field": "emission_value",
+                        "type": "nominal",
+                        "title": "Emission Value",
+                        "format": ".2f"
+                    }
+                ],
+                "strokeWidth": {
+                    "condition": [
+                        {
+                            "param": "highlight",
+                            "empty": false,
+                            "value": 1
+                        }
+                    ],
+                    "value": 0.5
+                }
+            }
+        }
+    ],
+    "config": {}
+}
